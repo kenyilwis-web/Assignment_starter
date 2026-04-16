@@ -1,0 +1,36 @@
+# Git ignore for the root project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Backend
+backend/__pycache__/
+backend/*.pyc
+backend/.Python
+backend/venv/
+backend/.env
+backend/.env.local
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+frontend/.env
+frontend/.env.local
+frontend/npm-debug.log
+frontend/yarn-error.log
+
+# Logs
+*.log
+logs/
+
+# Misc
+.DS_Store
+*.pem
+*.key
