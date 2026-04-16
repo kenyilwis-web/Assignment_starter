@@ -1,208 +1,50 @@
-# Backend - Student Management API
+Backend - Student Management API
 
-This is the Flask backend API for the Student Management System. It provides RESTful endpoints for managing student data.
+This is the Python Flask backend for the student management system.
 
-## Features
+What You Need
 
-- ✅ RESTful API with CRUD operations
-- ✅ In-memory data storage (no persistence required)
-- ✅ CORS enabled for frontend communication
-- ✅ JSON request/response format
+You must have Python 3.7 or higher installed. You can install packages using pipenv or pip.
 
-## Prerequisites
+How To Install
 
-- Python 3.7+
-- pip or pipenv
+Go into the backend folder. Then install the dependencies using either pipenv or pip. After that, type python app.py to start the server.
 
-## Installation
+The server will start on http://localhost:5000
 
-### Using Pipenv (Recommended)
+What It Does
 
-1. Navigate to the backend directory:
+The backend is an API that handles all the student information. When the frontend needs to get, add, update, or delete a student, it talks to the backend. The backend gives back the information as JSON data.
 
-```bash
-cd backend
-```
+How It Works
 
-2. Install dependencies:
+The backend has a Student class that represents a single student. Each student has an ID number, a name, and a course.
 
-```bash
-pipenv install
-```
+Students are stored in a list in memory. When you restart the backend, the list is reset to the original two students.
 
-3. Activate the virtual environment:
+There are 5 main operations the backend can do.
 
-```bash
-pipenv shell
-```
+GET students - This returns a list of all students.
 
-### Using pip
+GET students with ID - This returns one specific student by their ID number.
 
-1. Navigate to the backend directory:
+POST students - This creates a new student. You send the name and course, and the backend creates a new ID automatically and saves it.
 
-```bash
-cd backend
-```
+PUT students with ID - This updates an existing student. You send the new information, and it replaces the old information.
 
-2. Create a virtual environment:
+DELETE students with ID - This removes a student from the list.
 
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+When Something Goes Wrong
 
-3. Install dependencies:
+The API responds with different codes. If everything is okay, you get code 200. If you create something new, you get code 201. If something is not found, you get code 404. If there is an error on the server, you get code 500.
 
-```bash
-pip install flask flask-cors
-```
+CORS Support
 
-## Running the Backend
+CORS is enabled. This means the frontend can talk to the backend even though they are on different ports on the same computer.
 
-```bash
-python app.py
-```
+The Two Starting Students
 
-The backend will start on `http://localhost:5000`
-
-## API Endpoints
-
-### Get All Students
-
-```
-GET /students
-```
-
-Returns a list of all students.
-
-**Response Example:**
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Akida Mwaura",
-    "course": "Software Development"
-  },
-  {
-    "id": 2,
-    "name": "Mike John",
-    "course": "Cyber Security"
-  }
-]
-```
-
-### Get Single Student
-
-```
-GET /students/<id>
-```
-
-Returns a specific student by ID.
-
-**Response Example:**
-
-```json
-{
-  "id": 1,
-  "name": "Akida Mwaura",
-  "course": "Software Development"
-}
-```
-
-### Create Student
-
-```
-POST /students
-```
-
-Creates a new student. ID is auto-generated if not provided.
-
-**Request Body:**
-
-```json
-{
-  "name": "John Doe",
-  "course": "Data Science"
-}
-```
-
-**Response (201 Created):**
-
-```json
-{
-  "id": 3,
-  "name": "John Doe",
-  "course": "Data Science"
-}
-```
-
-### Update Student
-
-```
-PUT /students/<id>
-```
-
-Updates an existing student.
-
-**Request Body:**
-
-```json
-{
-  "name": "Jane Doe",
-  "course": "Web Development"
-}
-```
-
-**Response:**
-
-```json
-{
-  "id": 1,
-  "name": "Jane Doe",
-  "course": "Web Development"
-}
-```
-
-### Delete Student
-
-```
-DELETE /students/<id>
-```
-
-Deletes a student by ID.
-
-**Response (200 OK):**
-
-```json
-{
-  "message": "Student deleted"
-}
-```
-
-## Project Structure
-
-```
-backend/
-├── app.py          # Main Flask application with all CRUD endpoints
-├── Pipfile         # Pipenv dependencies file
-├── Pipfile.lock    # Locked dependencies
-└── README.md       # This file
-```
-
-## Data Model
-
-```python
-class Student:
-    def __init__(self, id, name, course=None):
-        self.id = id
-        self.name = name
-        self.course = course
-```
-
-## Error Handling
-
-The API returns appropriate HTTP status codes:
+When you first start the backend, there are two students already saved. Akida Mwaura is taking Software Development. Mike John is taking Cyber Security.
 
 - `200` - OK (successful GET, PUT, DELETE)
 - `201` - Created (successful POST)

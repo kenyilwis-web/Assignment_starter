@@ -1,103 +1,64 @@
-# Quick Start Guide - Student Management System
+Quick Start Guide - Student Management System
 
-## One-Line Setup
+The Easiest Way To Start
 
-### Linux/Mac
-```bash
-chmod +x setup.sh && ./setup.sh
-```
+If you are on Linux or Mac, you can use a setup script. Open your terminal in the project folder and run: chmod +x setup.sh && ./setup.sh
 
-### Windows
-```bash
-setup.bat
-```
+If you are on Windows, just double-click the file setup.bat
 
-## Manual Setup
+The script will install everything you need and tell you what to do next.
 
-### Backend Setup
+Manual Setup
 
-1. **Navigate to backend:**
-   ```bash
-   cd backend
-   ```
+If you prefer to set things up yourself, here is how to do it.
 
-2. **Install dependencies:**
-   ```bash
-   # Using pipenv (recommended)
-   pipenv install
-   
-   # Or using pip
-   python -m venv venv
-   source venv/bin/activate  # Windows: venv\Scripts\activate
-   pip install flask flask-cors
-   ```
+First, Install The Backend
 
-3. **Run the server:**
-   ```bash
-   # If using pipenv
-   pipenv shell
-   python app.py
-   
-   # If using pip
-   source venv/bin/activate  # Windows: venv\Scripts\activate
-   python app.py
-   ```
+Open a terminal. Go into the backend folder. Install the Python packages using pipenv or pip. Then run the app with python app.py. The backend will start on http://localhost:5000
 
-   Backend runs on: `http://localhost:5000`
+Second, Install The Frontend
 
-### Frontend Setup
+Open another terminal. Go into the frontend folder. Install the packages using npm install. Then run npm start. The app will open in your browser on http://localhost:3000
 
-1. **In a new terminal, navigate to frontend:**
-   ```bash
-   cd frontend
-   ```
+Now You Have Both Running
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+The frontend on your screen talks to the backend running in the terminal. When you add, edit, or delete a student in the browser, it sends the information to the backend. The backend stores it and the frontend shows the updated list.
 
-3. **Run the development server:**
-   ```bash
-   npm start
-   ```
+What The Backend Can Do
 
-   Frontend runs on: `http://localhost:3000`
+GET all students - Returns a list of every student.
 
-## API Endpoints
+GET one student - Returns info about one student by ID.
 
-Once both servers are running, the frontend will communicate with:
+POST a student - Creates a new student with a new ID.
 
-- `GET /students` - Get all students
-- `GET /students/:id` - Get a specific student
-- `POST /students` - Add a new student
-- `PUT /students/:id` - Update a student
-- `DELETE /students/:id` - Delete a student
+PUT a student - Updates a student's information.
 
-## Testing the API with cURL
+DELETE a student - Removes a student.
 
-```bash
-# Get all students
-curl http://localhost:5000/students
+How To Tell If It Is Working
 
-# Add a new student
-curl -X POST http://localhost:5000/students \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Jane Doe","course":"Web Development"}'
+When you open http://localhost:3000 in your browser, you see the student management form and the list of students. You can add a new student and see it appear in the list. You can click Edit to change a student. You can click Delete to remove a student.
 
-# Update a student
-curl -X PUT http://localhost:5000/students/1 \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Jane Smith","course":"Full Stack"}'
+If you see an error that says it cannot connect to the backend, make sure the backend is running on http://localhost:5000
 
-# Delete a student
-curl -X DELETE http://localhost:5000/students/1
-```
+If you see an error about ports in use, another program might be using that port. You may need to close that program or restart your computer.
 
-## Troubleshooting
+If you see an error about missing packages, go back and make sure you ran the install commands.
 
-### "Port 5000 is already in use"
-```bash
+Where To Find Things
+
+The backend code is in the backend folder. The file app.py has all the logic.
+
+The frontend code is in the frontend folder. The folder src has all the React code.
+
+There are README files in both folders with more details.
+
+What Happens To My Data
+
+All data is stored in memory. When you close the backend, the data is gone. There is no database. This is intentional for this project.
+
+When you first start the backend, there are two students already: Akida Mwaura and Mike John. You can add more, edit them, or delete them.
 # Find the process using port 5000
 lsof -i :5000
 

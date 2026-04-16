@@ -1,212 +1,65 @@
-# Student Management System
+Student Management System
 
-A full-stack application for managing student records with a Flask backend API and React frontend UI.
+This is a simple application for managing students. It has two main parts: a backend that runs on your server using Python, and a frontend that runs in your browser using React.
 
-## Project Structure
+What Can You Do
 
-```
-Assignment_starter/
-├── backend/                 # Flask REST API
-│   ├── app.py              # Main application file with CRUD endpoints
-│   ├── Pipfile             # Python dependencies
-│   ├── Pipfile.lock        # Locked dependencies
-│   └── README.md           # Backend documentation
-├── frontend/               # React web application
-│   ├── public/
-│   │   └── index.html
-│   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── styles/         # Component styles
-│   │   ├── App.js          # Main App component
-│   │   └── index.js        # Entry point
-│   ├── package.json        # Node dependencies
-│   └── README.md           # Frontend documentation
-└── readme.md               # This file
-```
+You can view all students. You can add a new student by entering their name and course. You can edit a student's information. You can delete a student from the list.
 
-## Features
+What You Need
 
-✅ **Retrieve all students** - View the complete list of students  
-✅ **Retrieve a single student** - Access specific student details by ID  
-✅ **Add new student** - Create new student records  
-✅ **Update student** - Modify existing student information  
-✅ **Delete student** - Remove student records  
-✅ **Responsive UI** - Works on desktop and mobile devices  
-✅ **In-memory storage** - No database persistence required  
+For the frontend, you need Node.js and npm installed on your computer.
 
-## Tech Stack
+For the backend, you need Python version 3.7 or higher. You also need pipenv or pip to manage Python packages.
 
-### Backend
-- **Framework:** Flask (Python web framework)
-- **CORS:** Flask-CORS (for cross-origin requests)
-- **Port:** 5000
+How The Project Is Organized
 
-### Frontend
-- **Framework:** React 18
-- **Styling:** CSS3 with Flexbox/Grid
-- **HTTP Client:** Fetch API
-- **Port:** 3000
+There is a backend folder that contains the Python Flask application. There is a frontend folder that contains the React application. The backend runs on port 5000, and the frontend runs on port 3000.
 
-## Quick Start
+How To Get Started
 
-### Prerequisites
+Read the QUICKSTART.md file for step by step instructions. There is also a setup script you can run that will set everything up for you.
 
-- **Node.js** (v14+) and **npm** for the frontend
-- **Python** (3.7+) for the backend
-- **pipenv** or **pip** for Python dependencies
+For more technical details about the backend, read the README.md file in the backend folder.
 
-### Running the Backend
+For more information about the frontend, read the README.md file in the frontend folder.
 
-1. Navigate to the backend directory:
+How The Application Works
 
-```bash
-cd backend
-```
+When you start the application, you see a form on the left side where you can add a new student. On the right side, you see a list of all the students.
 
-2. Install dependencies using Pipenv:
+To add a student, type their name and course in the form and click the Add Student button.
 
-```bash
-pipenv install
-```
+To change a student's information, click the Edit button on their card.
 
-3. Activate the environment:
+To remove a student, click the Delete button on their card.
 
-```bash
-pipenv shell
-```
+Data Storage
 
-4. Run the Flask application:
+This application stores data in memory. This means that when you restart the backend, all the student information is reset. There is no database.
 
-```bash
-python app.py
-```
+Two students are already added when you start the application: Akida Mwaura who is studying Software Development, and Mike John who is studying Cyber Security.
 
-The backend will be available at `http://localhost:5000`
+Front End Design
 
-### Running the Frontend
+The application looks good on both desktop and mobile devices. There are cards that show each student's information. The form lets you easily add or edit students.
 
-Open a new terminal and:
+Back End Design
 
-1. Navigate to the frontend directory:
+The backend is a simple API that handles the storage and retrieval of student data. It uses the Flask framework which is easy to understand. It has CORS enabled so the frontend can communicate with it.
 
-```bash
-cd frontend
-```
+How To Use The Application
 
-2. Install dependencies:
+Start the backend first. Then start the frontend. Open your browser to http://localhost:3000. You will see the student management application.
 
-```bash
-npm install
-```
+Trouble Shooting
 
-3. Start the React development server:
+If you get an error that a port is already in use, check if another program is using that port. You may need to close that program or find out what process PID is using it.
 
-```bash
-npm start
-```
+If the frontend cannot connect to the backend, make sure the backend is running on http://localhost:5000. Make sure both are running on localhost.
 
-The frontend will open at `http://localhost:3000`
+If you see errors about missing modules, make sure you ran the install command for dependencies.
 
-## Using the Application
+What Next
 
-1. **View Students** - The main page displays all students in a card layout
-2. **Add Student** - Fill out the form on the left with a student name and course, then click "Add Student"
-3. **Edit Student** - Click the "Edit" button on any student card to modify their information
-4. **Delete Student** - Click the "Delete" button to remove a student (with confirmation)
-
-## API Endpoints
-
-All endpoints are prefixed with `http://localhost:5000` and return JSON data.
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/students` | Get all students |
-| GET | `/students/<id>` | Get a specific student |
-| POST | `/students` | Create a new student |
-| PUT | `/students/<id>` | Update a student |
-| DELETE | `/students/<id>` | Delete a student |
-
-## Sample Data
-
-The application comes with two pre-loaded students:
-
-| ID | Name | Course |
-|----|------|--------|
-| 1 | Akida Mwaura | Software Development |
-| 2 | Mike John | Cyber Security |
-
-## Troubleshooting
-
-### Backend issues
-
-**Port 5000 already in use:**
-```bash
-# On Linux/Mac
-lsof -i :5000
-kill -9 <PID>
-
-# On Windows
-netstat -ano | findstr :5000
-taskkill /PID <PID> /F
-```
-
-**Module not found errors:**
-Make sure you've installed dependencies with `pipenv install`
-
-### Frontend issues
-
-**Port 3000 already in use:**
-The React app will ask to run on a different port. Accept the prompt.
-
-**Backend connection errors:**
-Ensure the Flask backend is running on `http://localhost:5000` before starting the frontend.
-
-**CORS errors:**
-The backend has CORS enabled. If issues persist, check that both apps can communicate on localhost.
-
-## Development Notes
-
-- **Data Persistence:** Data is stored in memory and will be reset when the backend restarts
-- **Authentication:** No authentication is implemented
-- **Rate Limiting:** No rate limiting is implemented
-- **Validation:** Basic client-side validation is implemented
-
-## Building for Production
-
-### Frontend Production Build
-
-```bash
-cd frontend
-npm run build
-```
-
-This creates an optimized production build in the `build/` directory.
-
-### Backend Deployment
-
-The Flask app can be deployed using services like:
-- Heroku
-- AWS EC2
-- Google Cloud Run
-- DigitalOcean
-
-Remember to set `debug=False` for production.
-
-## Future Enhancements
-
-- [ ] Database integration (PostgreSQL/MongoDB)
-- [ ] User authentication and authorization
-- [ ] Student grades and performance tracking
-- [ ] File uploads for student documents
-- [ ] Email notifications
-- [ ] Search and filter functionality
-- [ ] Pagination for large student lists
-- [ ] Admin dashboard
-
-## License
-
-This project is provided as-is for educational purposes.
-
-## Support
-
-For issues or questions, please check the individual README files in the `backend/` and `frontend/` directories.
+You can improve this application by adding a database so data persists. You can add login functionality. You can add more information about each student like grades or attendance. You can add the ability to upload files for students.
